@@ -50,3 +50,14 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#Visual Studio files
+.vs
+[Bb]in/
+[Oo]bj/
+.vscode
+
+# PVS-Studio files
+PVS-Studio.log
+report.tasks
+strace_out
