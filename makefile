@@ -1,5 +1,5 @@
 GCC = gcc
-GCC_FLAGS = -Wall -std=gnu99 -pedantic -fsanitize=address -lm
+GCC_FLAGS = -Wall -std=c99 -pedantic  -fsanitize=address -lm
 
 SRC_SERVER= src/server.c
 SRC_CLIENT= src/client.c

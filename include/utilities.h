@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define BUFFER_SIZE 100
+
 #define ERROR_CODE -1
 #define ERROR_MESSAGE_SIZE 50
 

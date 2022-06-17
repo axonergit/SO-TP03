@@ -65,5 +65,6 @@ int connectClient(struct sockaddr_in * address, socklen_t length, int fdSocket) 
         errorHandler(SOURCE_ERROR_NAME, "Connection failed");
     }
 
+    printf("Se conectó al cliente exitosamente");
     return SUCCESS;
 }
