@@ -16,16 +16,16 @@ int main(int argc, char * argv[]) {
 static int getInput(int fdServer) {
 
     char clientInput[BUFFER_SIZE] = {0};
+    printf("Mi respuesta: ");
 
-    while(fgets(clientInput, BUFFER_SIZE - 1, stdin) != NULL) {
-
-        printf("Mi respuesta: ");
+    while(fgets(clientInput, BUFFER_SIZE - 1, stdin) != NULL) {        
 
         if(send(fdServer, clientInput, BUFFER_SIZE, 0) == ERROR_CODE) {
             errorHandler(SRC_ERROR_CLIENT, "Send message to server failed");
         }
 
         memset(clientInput, 0, BUFFER_SIZE);
+        printf("Mi respuesta: ");
     }
 
     printf("Se cierra cliente.\n");
