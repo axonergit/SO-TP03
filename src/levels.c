@@ -17,7 +17,8 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
 }
 
  int level1(char *ans, size_t ansLen, FILE *input) {
-    printf("Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.\n\n"
+    printf("------------- DESAFIO -------------"
+            "Bienvenidos al TP3 y felicitaciones, ya resolvieron el primer acertijo.\n\n"
            "En este TP deberán finalizar el juego que ya comenzaron resolviendo los desafíos de cada nivel.\n"
            "Además tendrán que investigar otras preguntas para responder durante la defensa.\n"
            "El desafío final consiste en crear un programa que se comporte igual que yo, es decir, que provea los\n"
@@ -36,7 +37,7 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
  int level2(char *ans, size_t ansLen, FILE *input){
     printf("------------- DESAFIO -------------\n"
             "The wire S1E5\n"
-           "5295 888 6288\n\n"
+           "5295 888 6288\n\n\n"
            "----- PREGUNTA PARA INVESTIGAR -----\n"
            "¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?\n");
 
@@ -45,7 +46,7 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
 
  int level3(char *ans, size_t ansLen, FILE *input){
     printf("------------- DESAFIO -------------\n"
-            "https://ibb.co/tc0Hb6w\n"
+            "https://ibb.co/tc0Hb6w\n\n"
            "----- PREGUNTA PARA INVESTIGAR -----\n"
            "¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n");
 
@@ -69,7 +70,7 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
 
  int level5(char *ans, size_t ansLen, FILE *input) {
     printf("------------- DESAFIO -------------\n"
-            "respuesta = strings:277\n"
+            "respuesta = strings:277\n\n\n"
            "----- PREGUNTA PARA INVESTIGAR -----\n"
            "¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
 
@@ -78,7 +79,7 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
 
  int level6(char *ans, size_t ansLen, FILE *input){
      printf("------------- DESAFIO -------------\n"
-            ".plt .plt.got .text ? .fini\n\n"
+            ".data .bss .comment ? .shstrtab .symtab .strtab\n\n\n"
             "----- PREGUNTA PARA INVESTIGAR -----\n"
             "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?");
 
@@ -101,9 +102,9 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
  int level8(char *ans, size_t ansLen, FILE *input){
     printf("------------- DESAFIO -------------\n"
            "¿?\n\n"
-           "\033[0;30;40m La respuesta es BUmyYq5XxXGt \033[0m\n"
+           "\033[0;30;40m La respuesta es BUmyYq5XxXGt \033[0m\n\n"
            "----- PREGUNTA PARA INVESTIGAR -----\n"
-           "¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?");
+           "¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?\n");
     
     return compareAnswer(ans, ansLen, input, "BUmyYq5XxXGt\n");
 }
@@ -122,12 +123,14 @@ static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns
 
 }
 int level10(char *ans, size_t ansLen, FILE *input){
-    printf("quine\n\n"
-           "----- PREGUNTA PARA INVESTIGAR -----\n"
-           "¿Cuáles son las características del protocolo SCTP?");
+    printf("quine\n\n");
+           
 
     checkQuine();
 
+    printf("----- PREGUNTA PARA INVESTIGAR -----\n"
+           "¿Cuáles son las características del protocolo SCTP?");
+           
     return compareAnswer(ans, ansLen, input, "chin_chu_lan_cha\n");
 }
 
