@@ -1,15 +1,14 @@
 #ifndef LEVELS_H
 #define LEVELS_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-
-#define ERROR -1
+#include "utilities.h"
 
 #define STDOUT 1
 #define STDERR 2
+
+#define CHOSEN_PID 0x12345678
+
+#define SRC_ERROR_LEVELS "Levels"
 
 int level1(char *ans, size_t ansLen, FILE *input);
 int level2(char *ans, size_t ansLen, FILE *input);

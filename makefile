@@ -18,8 +18,25 @@ server: $(SRC_SERVER) $(SRC_LEVELS) $(SRC_SOCKET_LIB) $(SRC_UTILITIES)
 client: $(SRC_CLIENT) $(SRC_SOCKET_LIB) $(SRC_UTILITIES)
 	$(GCC) -o $(EXEC_CLIENT) -I./include $(SRC_CLIENT) $(SRC_SOCKET_LIB) $(SRC_UTILITIES) $(GCC_FLAGS)
 
+test:
+	make all
+	valgrind --leak-check=full -v --show-leak-kinds=all ./client ./server 2> app.valgrind
+	cppcheck --quiet --enable=all --force --inconclusive SRC_UTILITIES SRC_SOCKET_LIB SRC_SERVER SRC_LEVELS SRC_CLIENT --check-config .  2> cpptest.txt
+	make clean
+	pvs-studio-analyzer trace -- make
+	pvs-studio-analyzer analyze
+	plog-converter -a '64:1,2,3;GA:1,2,3;OP:1,2,3' -t tasklist -o report.tasks PVS-Studio.log
+	rm -f PVS-Studio.log
+	make clean
+
 clean:
 	rm -f EXEC_SERVER
 	rm -f EXEC_CLIENT
+
+clean_test:
+	rm -f app.valgrind
+	rm -f cpptest.txt
+	rm -f report.tasks
+	rm -f strace_out
 
 .PHONY:  all clean server client;
