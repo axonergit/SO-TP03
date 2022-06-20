@@ -25,14 +25,11 @@ static int getInput(int fdServer) {
     if(clientInput == NULL) {
         errorHandler(SRC_ERROR_CLIENT, "Allocate memory failed");
     }
-    memset(clientInput, 0, cInputLength);
-
-    printf("Mi respuesta: ");
 
     int leave = 0;
     while (!leave) {
-        printf("Ingrese su respuesta: ");
 
+        printf("Mi respuesta: ");
         memset(clientInput, 0, cInputLength);
 
         int previousErrno = errno;
