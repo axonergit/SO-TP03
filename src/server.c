@@ -36,7 +36,7 @@ static int letTheGamesBegin(int fdClient) {
 
 static int levelsHandler(FILE * serverInput) {
 
-    char * serverBuffer = malloc(BUFFER_SIZE * sizeof(char));
+    char * serverBuffer = (char *) malloc(BUFFER_SIZE * sizeof(char));
     int sBufferLength = BUFFER_SIZE;
 
     if(serverBuffer == NULL) {
