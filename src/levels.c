@@ -14,11 +14,6 @@ static void challengeQuestion();
 
 static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns) {
 
-/*
-    if(getline(&ans, &ansLen, input) == ERROR_CODE) {
-        errorHandler(SRC_ERROR_LEVELS, "Getline failed");
-    }*/
-    
     fscanf(input, "%s",ans);
 
     printf("--> %s y %s\n\n", ans, correctAns);
