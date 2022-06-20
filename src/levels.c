@@ -14,12 +14,15 @@ static void challengeQuestion();
 
 static int compareAnswer(char *ans, size_t ansLen, FILE *input, char *correctAns) {
 
+/*
     if(getline(&ans, &ansLen, input) == ERROR_CODE) {
         errorHandler(SRC_ERROR_LEVELS, "Getline failed");
-    }
+    }*/
+    
+    fscanf(input, "%s",ans);
 
-    return 1;
-    //return (strcmp(ans, correctAns) == 0);
+    printf("--> %s y %s\n\n", ans, correctAns);
+    return (strcmp(ans, correctAns) == 0);
 }
 
 static void challengeHeader() {
@@ -52,7 +55,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?\n");
     
-    return compareAnswer(ans, ansLen, input, "entendido\n");
+    return compareAnswer(ans, ansLen, input, "entendido");
 }
 
 
@@ -67,7 +70,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?\n");
 
-    return compareAnswer(ans, ansLen, input, "itba\n");
+    return compareAnswer(ans, ansLen, input, "itba");
 }
 
  int level3(char *ans, size_t ansLen, FILE *input) {
@@ -80,7 +83,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n");
 
-    return compareAnswer(ans, ansLen, input, "M4GFKZ289aku\n");
+    return compareAnswer(ans, ansLen, input, "M4GFKZ289aku");
 }
 
  int level4(char *ans, size_t ansLen, FILE *input) {
@@ -99,7 +102,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
     printf("¿Qué útil abstracción es utilizada para comunicarse con sockets? "
     "¿se puede utilizar read(2) y write(2) para operar?\n");
     
-    return compareAnswer(ans, ansLen, input, "fk3wfLCm3QvS\n");
+    return compareAnswer(ans, ansLen, input, "fk3wfLCm3QvS");
 }
 
  int level5(char *ans, size_t ansLen, FILE *input) {
@@ -112,7 +115,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
 
-    return compareAnswer(ans, ansLen, input, "too_easy\n");
+    return compareAnswer(ans, ansLen, input, "too_easy");
 }
 
  int level6(char *ans, size_t ansLen, FILE *input) {
@@ -125,7 +128,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n");
 
-    return compareAnswer(ans, ansLen, input, ".RUN_ME\n");
+    return compareAnswer(ans, ansLen, input, ".RUN_ME");
 }
 
  int level7(char *ans, size_t ansLen, FILE *input) {
@@ -140,7 +143,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
         
     printf("¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?\n");
 
-    return compareAnswer(ans, ansLen, input, "K5n2UFfpFMUN\n");
+    return compareAnswer(ans, ansLen, input, "K5n2UFfpFMUN");
 
 }
 
@@ -155,7 +158,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?\n");
     
-    return compareAnswer(ans, ansLen, input, "BUmyYq5XxXGt\n");
+    return compareAnswer(ans, ansLen, input, "BUmyYq5XxXGt");
 }
 
  int level9(char *ans, size_t ansLen, FILE *input) {
@@ -172,7 +175,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?\n");
 
-    return compareAnswer(ans, ansLen, input, "u^v\n");
+    return compareAnswer(ans, ansLen, input, "u^v");
 
 }
 int level10(char *ans, size_t ansLen, FILE *input) {
@@ -187,7 +190,7 @@ int level10(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Cuáles son las características del protocolo SCTP?\n");
            
-    return compareAnswer(ans, ansLen, input, "chin_chu_lan_cha\n");
+    return compareAnswer(ans, ansLen, input, "chin_chu_lan_cha");
 }
 
 int level11(char *ans, size_t ansLen, FILE *input) {
@@ -203,7 +206,7 @@ int level11(char *ans, size_t ansLen, FILE *input) {
 
     printf("¿Qué es un RFC?\n");
 
-    return compareAnswer(ans, ansLen, input, "gdb_rules\n");
+    return compareAnswer(ans, ansLen, input, "gdb_rules");
 
 }
 
@@ -221,7 +224,7 @@ int level11(char *ans, size_t ansLen, FILE *input) {
 
     printf("\n\n¿Fue divertido?");
 
-    return compareAnswer(ans, ansLen, input, "normal\n");
+    return compareAnswer(ans, ansLen, input, "normal");
 }
 
 static void obfuscateAnswer() {

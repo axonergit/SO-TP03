@@ -1,13 +1,13 @@
 #ifndef SOCKET_LIB_H
 #define SOCKET_LIB_H
 
+#include "utilities.h"
+
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <unistd.h>
-
-#include "utilities.h"
 
 #define LOCALHOST "127.0.0.1"
 #define MY_PORT 8080

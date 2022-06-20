@@ -10,9 +10,9 @@ int main(int argc, char * argv[]) {
     struct sockaddr_in address;
     int fdServer = buildServer(&address);
     int fdClient = connectSocket(&address, sizeof(address), fdServer);
-    closeSocket(fdServer);
 
     letTheGamesBegin(fdClient);
+    closeSocket(fdServer);
 
     return SUCCESS;
 }
@@ -37,7 +37,7 @@ static int letTheGamesBegin(int fdClient) {
 static int levelsHandler(FILE * serverInput) {
 
     char * serverBuffer = (char *) malloc(BUFFER_SIZE * sizeof(char));
-    int sBufferLength = BUFFER_SIZE;
+    size_t sBufferLength = BUFFER_SIZE;
 
     if(serverBuffer == NULL) {
         errorHandler(SRC_ERROR_SERVER, "Allocate memory failed");
@@ -60,7 +60,7 @@ static int levelsHandler(FILE * serverInput) {
             sleep(WAIT_SECONDS);
         }
 
-        //system("clear");
+        system("clear");
     }
 
     free(serverBuffer);

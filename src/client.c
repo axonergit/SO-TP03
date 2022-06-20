@@ -19,8 +19,8 @@ int main(int argc, char * argv[]) {
 
 static int getInput(int fdServer) {
 
-    char * clientInput = malloc(BUFFER_SIZE * sizeof(char));
-    int cInputLength = BUFFER_SIZE;
+    char * clientInput = (char *) malloc((BUFFER_SIZE+1) * sizeof(char));
+    size_t cInputLength = BUFFER_SIZE;
 
     if(clientInput == NULL) {
         errorHandler(SRC_ERROR_CLIENT, "Allocate memory failed");
@@ -29,14 +29,33 @@ static int getInput(int fdServer) {
 
     printf("Mi respuesta: ");
 
-    while(fgets(clientInput, cInputLength - 1, stdin) != NULL) {        
+    int leave = 0;
+    while (!leave) {
+        printf("Ingrese su respuesta: ");
 
-        if(send(fdServer, clientInput, cInputLength, 0) == ERROR_CODE) {
-            errorHandler(SRC_ERROR_CLIENT, "Send message to server failed");
-        }
-        
-        printf("Mi respuesta: ");
         memset(clientInput, 0, cInputLength);
+
+        int previousErrno = errno;
+        if (getline(&clientInput, &cInputLength, stdin) == ERROR_CODE) {
+            if (previousErrno == errno) {
+                leave = 1;
+            } else {
+                errorHandler(SRC_ERROR_CLIENT, "Getline failed");
+            }
+        }
+
+        if (!leave) {
+            int readChars = strlen(clientInput);
+            if (readChars > 0) {
+                int sentChars = write(fdServer, clientInput, readChars);
+                if (sentChars == ERROR_CODE) {
+                    errorHandler(SRC_ERROR_CLIENT, "Write failed");
+                }
+                if (sentChars == 0) {
+                    leave = 1;
+                }
+            }
+        }
     }
 
     printf("Se cierra cliente.\n");
