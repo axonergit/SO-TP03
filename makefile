@@ -1,11 +1,12 @@
 GCC = gcc
-GCC_FLAGS = -Wall -std=c99 -pedantic  -fsanitize=address -lm
+GCC_FLAGS = -Wall -std=c99 -pedantic   -lm
 
 SRC_SERVER= src/server.c
 SRC_CLIENT= src/client.c
 SRC_LEVELS= src/levels.c
 SRC_SOCKET_LIB= src/socketLib.c
 SRC_UTILITIES= src/utilities.c
+
 
 EXEC_SERVER= server
 EXEC_CLIENT= client
@@ -20,8 +21,8 @@ client: $(SRC_CLIENT) $(SRC_SOCKET_LIB) $(SRC_UTILITIES)
 
 test:
 	make all
+	cppcheck --quiet --enable=all --force --inconclusive -I/include/ $(SRC_SERVER) $(SRC_LEVELS) $(SRC_SOCKET_LIB) $(SRC_UTILITIES) $(SRC_CLIENT) .  2> cpptest.txt
 	valgrind --leak-check=full -v --show-leak-kinds=all ./client ./server 2> app.valgrind
-	cppcheck --quiet --enable=all --force --inconclusive SRC_UTILITIES SRC_SOCKET_LIB SRC_SERVER SRC_LEVELS SRC_CLIENT --check-config .  2> cpptest.txt
 	make clean
 	pvs-studio-analyzer trace -- make
 	pvs-studio-analyzer analyze

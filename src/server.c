@@ -36,19 +36,22 @@ static int letTheGamesBegin(int fdClient) {
 
 static int levelsHandler(FILE * serverInput) {
 
-    char * serverBuffer = malloc(BUFFER_SIZE);
+    char * serverBuffer = malloc(BUFFER_SIZE * sizeof(char));
+    int sBufferLength = BUFFER_SIZE;
+
     if(serverBuffer == NULL) {
         errorHandler(SRC_ERROR_SERVER, "Allocate memory failed");
     }
 
+    srand((int) time(NULL));
     int currentLevel = 0;
     level levels[TOTAL_LEVELS] = {level1, level2, level3, level4, level5,
                 level6, level7, level8, level9, level10, level11, level12};
 
     while(currentLevel < TOTAL_LEVELS) {
 
-        memset(serverBuffer, 0, BUFFER_SIZE);
-        int goToNextLevel = levels[currentLevel](serverBuffer, BUFFER_SIZE, serverInput);
+        memset(serverBuffer, 0, sBufferLength);
+        int goToNextLevel = levels[currentLevel](serverBuffer, sBufferLength, serverInput);
 
         if (goToNextLevel) {
             currentLevel++;
@@ -57,7 +60,7 @@ static int levelsHandler(FILE * serverInput) {
             sleep(WAIT_SECONDS);
         }
 
-        system("clear");
+        //system("clear");
     }
 
     free(serverBuffer);
