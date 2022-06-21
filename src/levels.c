@@ -162,9 +162,9 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("Latexme\n\n"
     "Si \n"
-    "\\mathrm{d}y = u^v{\\cdot}(v'{\\cdot}\\ln{(u)}+v{\\cdot}\frac{u'}{u})\n"
+    "\\mathrm{d}y = u^v{\\cdot}(v'{\\cdot}\\ln{(u)}+v{\\cdot}\\frac{u'}{u})\n"
     "entonces\n"
-    "y = ?\n\n");
+    "y = \n\n");
 
     challengeQuestion();
 
@@ -192,8 +192,7 @@ int level11(char *ans, size_t ansLen, FILE *input) {
 
     challengeHeader();
 
-    printf("b gdbme y encontrá el valor mágico\n\n"
-    "ENTER para reintentar.\n");
+    printf("b gdbme y encontrá el valor mágico\n\n");
 
     gdbme();
 

@@ -25,7 +25,7 @@ static int letTheGamesBegin(int fdClient) {
     }
     
     levelsHandler(serverInput);
-    printf("Felicitaciones, finalizaron el juego. Ahora deberán implementar el servidor que se comporte como el servidor provisto\n\n");
+    printf("Felicitaciones, finalizaron el juego!\n\n");
 
     if(fclose(serverInput) == ERROR_CODE) {
         errorHandler(SRC_ERROR_SERVER, "Close stream failed");
