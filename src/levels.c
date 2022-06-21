@@ -87,7 +87,7 @@ int level1(char *ans, size_t ansLen, FILE *input) {
 
     printf("EBADF...\n");
 
-    if (write(69, "La respuesta es fk3wfLCm3QvS", 28) == ERROR_CODE) {
+    if (write(5, "write: Bad file descriptor\n", 27) == ERROR_CODE) {
         // Must not be modified
         perror("write");
     }
